@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>LoginApp</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
+
+<body>
+  <main class="container">
+    <!-- Image and text -->
+    <nav class="navbar navbar-light">
+      <a class="navbar-brand">
+        <img src="/images/rochesmall.png" class="d-inline-block align-top" alt="">
+      </a>
+      <ul class="navbar-nav">
+        {{#if user}}
+        <li class="nav-item">
+          <a class="nav-link" href="/">Logout</a>
+        </li>
+        {{/if}}
+      </ul>
+    </nav>
+    <div class="row">
+      <div class="col-lg-12">
+        {{#if success_msg}}
+        <div class="alert alert-success">{{success_msg}}</div>
+        {{/if}} {{#if error_msg}}
+        <div class="alert alert-danger">{{error_msg}}</div>
+        {{/if}} {{#if error}}
+        <div class="alert alert-danger">{{error}}</div>
+        {{/if}} {{{body}}}
+      </div>
+    </div>
+  </main>
+          {{#if user}}
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <p>Mov1Lab</p>
+      </div>
+      <div class="col">
+        <img id="status" src="/images/offline.png" />
+      </div>
+      <div class="col" id='masterServerIp'></div>
+      <div class="col" id='date'></div>
+    </div>
+  </div>
+</footer>
+{{/if}}
+</body>
+
+</html>

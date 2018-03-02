@@ -1,0 +1,12 @@
+D:\CodingDojo\SenderHelper\bin\Debug\SenderHelper.exe.config
+D:\CodingDojo\SenderHelper\bin\Debug\SenderHelper.exe
+D:\CodingDojo\SenderHelper\bin\Debug\SenderHelper.pdb
+D:\CodingDojo\SenderHelper\obj\Debug\SenderHelper.exe
+D:\CodingDojo\SenderHelper\obj\Debug\SenderHelper.pdb
+D:\CodingDojo\SenderHelper\bin\Debug\EngineIoClientDotNet.dll
+D:\CodingDojo\SenderHelper\bin\Debug\SocketIoClientDotNet.dll
+D:\CodingDojo\SenderHelper\bin\Debug\SuperSocket.ClientEngine.dll
+D:\CodingDojo\SenderHelper\bin\Debug\System.Collections.Immutable.dll
+D:\CodingDojo\SenderHelper\bin\Debug\WebSocket4Net.dll
+D:\CodingDojo\SenderHelper\bin\Debug\System.Collections.Immutable.xml
+D:\CodingDojo\SenderHelper\obj\Debug\SenderHelper.csprojResolveAssemblyReference.cache

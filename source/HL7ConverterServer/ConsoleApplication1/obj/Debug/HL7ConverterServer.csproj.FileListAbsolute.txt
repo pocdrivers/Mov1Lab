@@ -1,0 +1,14 @@
+C:\Development\HL7-Web-Display-Prototype\Source\HL7ConverterServer\ConsoleApplication1\bin\Debug\HL7ConverterServerTest.exe.config
+C:\Development\HL7-Web-Display-Prototype\Source\HL7ConverterServer\ConsoleApplication1\bin\Debug\HL7ConverterServerTest.exe
+C:\Development\HL7-Web-Display-Prototype\Source\HL7ConverterServer\ConsoleApplication1\bin\Debug\HL7ConverterServerTest.pdb
+C:\Development\HL7-Web-Display-Prototype\Source\HL7ConverterServer\ConsoleApplication1\obj\Debug\HL7ConverterServerTest.exe
+C:\Development\HL7-Web-Display-Prototype\Source\HL7ConverterServer\ConsoleApplication1\obj\Debug\HL7ConverterServerTest.pdb
+D:\VM\HL7-Web-Display-Prototype\Source\HL7ConverterServer\ConsoleApplication1\bin\Debug\HL7ConverterServerTest.exe.config
+D:\VM\HL7-Web-Display-Prototype\Source\HL7ConverterServer\ConsoleApplication1\bin\Debug\HL7ConverterServerTest.exe
+D:\VM\HL7-Web-Display-Prototype\Source\HL7ConverterServer\ConsoleApplication1\bin\Debug\HL7ConverterServerTest.pdb
+D:\VM\HL7-Web-Display-Prototype\Source\HL7ConverterServer\ConsoleApplication1\obj\Debug\HL7ConverterServer.csprojResolveAssemblyReference.cache
+D:\VM\HL7-Web-Display-Prototype\Source\HL7ConverterServer\ConsoleApplication1\obj\Debug\HL7ConverterServerTest.exe
+D:\VM\HL7-Web-Display-Prototype\Source\HL7ConverterServer\ConsoleApplication1\obj\Debug\HL7ConverterServerTest.pdb
+D:\Aplicaciones\mov1lab\source\HL7ConverterServer\ConsoleApplication1\bin\Debug\HL7ConverterServerTest.exe.config
+D:\Aplicaciones\mov1lab\source\HL7ConverterServer\ConsoleApplication1\obj\Debug\HL7ConverterServerTest.exe
+D:\Aplicaciones\mov1lab\source\HL7ConverterServer\ConsoleApplication1\obj\Debug\HL7ConverterServerTest.pdb
