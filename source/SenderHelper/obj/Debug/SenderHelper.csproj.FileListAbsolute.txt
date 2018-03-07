@@ -10,3 +10,6 @@ D:\CodingDojo\SenderHelper\bin\Debug\System.Collections.Immutable.dll
 D:\CodingDojo\SenderHelper\bin\Debug\WebSocket4Net.dll
 D:\CodingDojo\SenderHelper\bin\Debug\System.Collections.Immutable.xml
 D:\CodingDojo\SenderHelper\obj\Debug\SenderHelper.csprojResolveAssemblyReference.cache
+D:\Aplicaciones\mov1lab\source\SenderHelper\bin\Debug\SenderHelper.exe.config
+D:\Aplicaciones\mov1lab\source\SenderHelper\obj\Debug\SenderHelper.exe
+D:\Aplicaciones\mov1lab\source\SenderHelper\obj\Debug\SenderHelper.pdb

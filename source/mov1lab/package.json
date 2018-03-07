@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "body-parser": "~1.18.2",
+    "compression": "1.7.2",
     "connect-flash": "0.1.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
@@ -15,8 +16,10 @@
     "express-session": "1.15.6",
     "express-validator": "4.3.0",
     "hbs": "~4.0.1",
+    "helmet": "3.12.0",
     "morgan": "~1.9.0",
     "net": "1.0.2",
+    "node-windows": "0.1.14",
     "serve-favicon": "~2.4.5"
   },
   "devDependencies": {

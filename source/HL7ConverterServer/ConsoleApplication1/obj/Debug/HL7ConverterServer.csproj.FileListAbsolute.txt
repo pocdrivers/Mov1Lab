@@ -10,5 +10,7 @@ D:\VM\HL7-Web-Display-Prototype\Source\HL7ConverterServer\ConsoleApplication1\ob
 D:\VM\HL7-Web-Display-Prototype\Source\HL7ConverterServer\ConsoleApplication1\obj\Debug\HL7ConverterServerTest.exe
 D:\VM\HL7-Web-Display-Prototype\Source\HL7ConverterServer\ConsoleApplication1\obj\Debug\HL7ConverterServerTest.pdb
 D:\Aplicaciones\mov1lab\source\HL7ConverterServer\ConsoleApplication1\bin\Debug\HL7ConverterServerTest.exe.config
+D:\Aplicaciones\mov1lab\source\HL7ConverterServer\ConsoleApplication1\bin\Debug\HL7ConverterServerTest.exe
+D:\Aplicaciones\mov1lab\source\HL7ConverterServer\ConsoleApplication1\bin\Debug\HL7ConverterServerTest.pdb
 D:\Aplicaciones\mov1lab\source\HL7ConverterServer\ConsoleApplication1\obj\Debug\HL7ConverterServerTest.exe
 D:\Aplicaciones\mov1lab\source\HL7ConverterServer\ConsoleApplication1\obj\Debug\HL7ConverterServerTest.pdb

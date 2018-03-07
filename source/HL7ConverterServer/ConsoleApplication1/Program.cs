@@ -97,7 +97,9 @@ namespace HL7ToXMLServer
         // conversion to xml and html
         static void ConvertMessage(MemoryStream message)
         {
+            Console.WriteLine("Antes de enviar el mensaje: " + Encoding.ASCII.GetString(message.ToArray()));
             string xmlContent = HL7Converter.ConvertToXml(Encoding.ASCII.GetString(message.ToArray()));
+            Console.WriteLine("XML Message: ");
             Console.WriteLine(xmlContent);
             SendMessage(xmlContent);
             /*string xmlContent = HL7Converter.ConvertToXml(Encoding.ASCII.GetString(message.ToArray()));
@@ -171,6 +173,8 @@ namespace HL7ToXMLServer
 
         static void SendMessage(string msg)
         {
+            Console.WriteLine("Sending message: ");
+            Console.WriteLine(msg);
             // Data buffer for incoming data.  
             byte[] bytes = new byte[1024];
 
@@ -209,9 +213,8 @@ namespace HL7ToXMLServer
                         Encoding.ASCII.GetString(bytes, 0, bytesRec));*/
 
                     // Release the socket.  
-                    Console.WriteLine("BEFORE SHUTDOWN");
+                    Console.WriteLine("Releasing socket");
                     sender.Shutdown(SocketShutdown.Both);
-                    Console.WriteLine("AFTER SHUTDOWN");
                     sender.Close();
                     Console.WriteLine("END OF TRANSMISION");
 
@@ -236,17 +239,17 @@ namespace HL7ToXMLServer
             }
         }
 
-        private static void SendHeartBeat(object state)
-        {
-            Console.WriteLine("Sending HeartBeat");
-            SendMessage("Ping");
-        }
+        //private static void SendHeartBeat(object state)
+        //{
+        //    Console.WriteLine("Sending HeartBeat");
+        //    SendMessage("Ping");
+        //}
 
 
-        private static void StartHeartBeatMonitor()
-        {
-            Timer timerMonitor = new Timer(new TimerCallback(SendHeartBeat),null,0,10000);
-        }
+        //private static void StartHeartBeatMonitor()
+        //{
+        //    Timer timerMonitor = new Timer(new TimerCallback(SendHeartBeat),null,0,10000);
+        //}
 
         // main funcion
         static void Main(string[] args)
@@ -312,7 +315,7 @@ namespace HL7ToXMLServer
             listener.Start();
 
             listener.BeginAcceptTcpClient(OnClientAccepted, listener);
-            StartHeartBeatMonitor();
+            //StartHeartBeatMonitor();
             Console.WriteLine("[LOG] Press enter to exit...");
             Console.ReadLine();
             Console.WriteLine("[LOG] Shutting down.....");
