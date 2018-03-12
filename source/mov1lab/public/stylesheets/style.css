@@ -113,3 +113,13 @@ img.resize{
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.container-full {
+  margin: 0 auto;
+  width: 95%;
+}
+
+.table-header{
+    font-size: 1.25rem;
+    font-weight: 700;
+}

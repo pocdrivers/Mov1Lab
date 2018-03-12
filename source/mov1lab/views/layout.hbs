@@ -9,11 +9,13 @@
 </head>
 
 <body>
-  <main class="container">
+  <main class="container-full">
     <!-- Image and text -->
     <nav class="navbar navbar-light">
       <a class="navbar-brand">
+        {{#if user}}
         <img src="/images/rochesmall.png" class="d-inline-block align-top" alt="">
+        {{/if}}
       </a>
       <ul class="navbar-nav">
         {{#if user}}
