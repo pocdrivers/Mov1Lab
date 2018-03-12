@@ -14,8 +14,7 @@
     <nav class="navbar navbar-light">
       <a class="navbar-brand">
         {{#if user}}
-        <img src="/images/rochesmall.png" class="d-inline-block align-top" alt="">
-        {{/if}}
+        <img src="/images/rochesmall.png" class="d-inline-block align-top" alt=""> {{/if}}
       </a>
       <ul class="navbar-nav">
         {{#if user}}
@@ -37,22 +36,22 @@
       </div>
     </div>
   </main>
-          {{#if user}}
-<footer class="footer">
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <p>Mov1Lab</p>
+  {{#if user}}
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <p>Mov1Lab</p>
+        </div>
+        <div class="col">
+          <img id="status" src="/images/offline.png" />
+        </div>
+        <div class="col" id='masterServerIp'></div>
+        <div class="col" id='date'></div>
       </div>
-      <div class="col">
-        <img id="status" src="/images/offline.png" />
-      </div>
-      <div class="col" id='masterServerIp'></div>
-      <div class="col" id='date'></div>
     </div>
-  </div>
-</footer>
-{{/if}}
+  </footer>
+  {{/if}}
 </body>
 
 </html>

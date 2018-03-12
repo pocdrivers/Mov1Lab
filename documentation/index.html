@@ -1,0 +1,891 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset='utf-8' />
+  <title>messagesender 0.0.0 | Documentation</title>
+  <meta name='viewport' content='width=device-width,initial-scale=1'>
+  <link href='assets/bass.css' type='text/css' rel='stylesheet' />
+  <link href='assets/style.css' type='text/css' rel='stylesheet' />
+  <link href='assets/github.css' type='text/css' rel='stylesheet' />
+  <link href='assets/split.css' type='text/css' rel='stylesheet' />
+</head>
+<body class='documentation m0'>
+    <div class='flex'>
+      <div id='split-left' class='overflow-auto fs0 height-viewport-100'>
+        <div class='py1 px2'>
+          <h3 class='mb0 no-anchor'>messagesender</h3>
+          <div class='mb1'><code>0.0.0</code></div>
+          <input
+            placeholder='Filter'
+            id='filter-input'
+            class='col12 block input'
+            type='text' />
+          <div id='toc'>
+            <ul class='list-reset h5 py1-ul'>
+              
+                
+                <li><a
+                  href='#express'
+                  class="">
+                  express
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#net'
+                  class="">
+                  net
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#http'
+                  class="">
+                  http
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#io'
+                  class="">
+                  io
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#port'
+                  class="">
+                  Port
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#connectedclients'
+                  class="">
+                  connectedClients
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#lasttimeheartbeatwasreceived'
+                  class="">
+                  lastTimeHeartBeatWasReceived
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#server'
+                  class="">
+                  server
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#on'
+                  class="">
+                  on
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#on'
+                  class="">
+                  on
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#handlehandshake'
+                  class="">
+                  handleHandshake
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#setinterval'
+                  class="">
+                  setInterval
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#bin2string'
+                  class="">
+                  bin2String
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#listen'
+                  class="">
+                  listen
+                  
+                </a>
+                
+                </li>
+              
+            </ul>
+          </div>
+          <div class='mt1 h6 quiet'>
+            <a href='http://documentation.js.org/reading-documentation.html'>Need help reading this?</a>
+          </div>
+        </div>
+      </div>
+      <div id='split-right' class='relative overflow-auto height-viewport-100'>
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='express'>
+      express
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>MessageSender is a middle application in charge of
+receive messages from cobas and sending them to
+the mov1lab application to show them to the user.
+This application its also known to as the
+"middleman". The application receive messsages
+through tcp from cobas and sends them through
+http to mov1lab.</p>
+
+
+  <div class='pre p1 fill-light mt0'>express</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='net'>
+      net
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Used to stablish the connection with the main server through tcp</p>
+
+
+  <div class='pre p1 fill-light mt0'>net</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='http'>
+      http
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Used to stablish the connection with the client through http</p>
+
+
+  <div class='pre p1 fill-light mt0'>http</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='io'>
+      io
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Used to signal the client that the middleman is alive</p>
+
+
+  <div class='pre p1 fill-light mt0'>io</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='port'>
+      Port
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Default port to listen for messages comming from cobas</p>
+
+
+  <div class='pre p1 fill-light mt0'>Port</div>
+  
+    <p>
+      Type:
+      <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='connectedclients'>
+      connectedClients
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>List of connected clients. Used to have a list of connected ip adresses.</p>
+
+
+  <div class='pre p1 fill-light mt0'>connectedClients</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='lasttimeheartbeatwasreceived'>
+      lastTimeHeartBeatWasReceived
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Stores the last time a heart beat signal was emited from the tool that
+receives messages from cobas.</p>
+
+
+  <div class='pre p1 fill-light mt0'>lastTimeHeartBeatWasReceived</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='server'>
+      server
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Creates the server that will listen for incoming messages.
+Every time a new message is received, it is sent to the
+client.</p>
+
+
+  <div class='pre p1 fill-light mt0'>server</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='on'>
+      on
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Event that gets executed everytime a message is received.
+If the message received is a ping, the datetime is stored
+in lastTimeHeartBeatWasReceived to be compared later and
+assume that the application that sends messages is alive;
+otherwise, we asume is a valid message and it is sent to
+the client.</p>
+
+
+  <div class='pre p1 fill-light mt0'>on</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='on'>
+      on
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Event that gets executed everytime the application that
+sends messages fails. When this happen the client gets
+a signal indicating that the server is down.</p>
+
+
+  <div class='pre p1 fill-light mt0'>on</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='handlehandshake'>
+      handleHandshake
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Sends a message to the client application with the ip address
+of the application that sends the messages.</p>
+
+
+  <div class='pre p1 fill-light mt0'>handleHandshake(remoteAddress: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>remoteAddress</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='setinterval'>
+      setInterval
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>This method gets executed every 10 seconds to check when was
+the last time that a heartbeat was received. If the interval
+of time is bigger than 10 seconds, we asume the server is
+down.</p>
+
+
+  <div class='pre p1 fill-light mt0'>setInterval</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='bin2string'>
+      bin2String
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Transform the byte array representation of the message
+to a string.</p>
+
+
+  <div class='pre p1 fill-light mt0'>bin2String(array: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a>)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>array</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='listen'>
+      listen
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Listen for new client connections on port 3006.</p>
+
+
+  <div class='pre p1 fill-light mt0'>listen</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+      </div>
+    </div>
+  <script src='assets/anchor.js'></script>
+  <script src='assets/split.js'></script>
+  <script src='assets/site.js'></script>
+</body>
+</html>

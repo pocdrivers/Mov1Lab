@@ -1,22 +1,47 @@
+/** 
+ * MessageSender is a middle application in charge of
+ * receive messages from cobas and sending them to
+ * the mov1lab application to show them to the user.
+ * This application its also known to as the
+ * "middleman". The application receive messsages
+ * through tcp from cobas and sends them through
+ * http to mov1lab.
+*/
+
 var express = require('express');
 var app = express();
-//used to stablish the connection with the main server through tcp
-var net = require('net');
-//used to stablish the connection with the client through http
+/**
+ * Used to stablish the connection with the main server through tcp
+ */
+ var net = require('net');
+/**
+ * Used to stablish the connection with the client through http
+ */
 var http = require('http').Server(app);
+/** 
+ * Used to signal the client that the middleman is alive
+*/
 var io = require('socket.io')(http,{pingInterval: 1000, pingTimeout:5000});
-
+/**
+ * Default port to listen for messages comming from cobas
+ */
 const Port = 9000;
-
+/** 
+ * List of connected clients. Used to have a list of connected ip adresses.
+*/
 var connectedClients = [];
+/** 
+ * Stores the last time a heart beat signal was emited from the tool that
+ * receives messages from cobas.
+*/
 var lastTimeHeartBeatWasReceived = null;
 
-//Create the server object
+/** 
+ * Creates the server that will listen for incoming messages.
+ * Every time a new message is received, it is sent to the
+ * client.
+*/
 var server = net.createServer(function(socket){
-
-  /*socket.name = socket.remoteAddress + ":" + socket.remotePort;
-  console.log('remote ' + socket.name);
-  console.log('local ' + socket.localAddress + ":" + socket.localPort);*/
 
   var remoteAddress = socket.remoteAddress + ':' + socket.remotePort;
   
@@ -26,6 +51,14 @@ var server = net.createServer(function(socket){
     handleHandshake(remoteAddress);
   //}
 
+  /**
+   * Event that gets executed everytime a message is received.
+   * If the message received is a ping, the datetime is stored
+   * in lastTimeHeartBeatWasReceived to be compared later and
+   * assume that the application that sends messages is alive;
+   * otherwise, we asume is a valid message and it is sent to 
+   * the client.
+   */
   socket.on('data',function(data){
     console.log('mensaje recibido');
     var mensaje = bin2String(data);
@@ -38,7 +71,6 @@ var server = net.createServer(function(socket){
     else
     {
       io.emit('updateTable', mensaje);
-      //socket.write("llego");
       console.log(mensaje);
     }
   });
@@ -48,6 +80,11 @@ var server = net.createServer(function(socket){
     //io.emit('disconnect');
   });
 
+  /**
+   * Event that gets executed everytime the application that
+   * sends messages fails. When this happen the client gets
+   * a signal indicating that the server is down.
+   */
   socket.on('error',function(e){
     if (e != "websocket: close sent") {
       console.log('An unexpected error occured: ', e);
@@ -58,10 +95,21 @@ var server = net.createServer(function(socket){
 
 }).listen(Port);
 
+/**
+ * Sends a message to the client application with the ip address
+ * of the application that sends the messages.
+ * @param {string} remoteAddress 
+ */
 function handleHandshake(remoteAddress){
   io.emit('updateFooterIp',remoteAddress);
 }
 
+/**
+ * This method gets executed every 10 seconds to check when was
+ * the last time that a heartbeat was received. If the interval
+ * of time is bigger than 10 seconds, we asume the server is 
+ * down.
+ */
 setInterval(function(){
   var now = new Date();
   var timeSinceLastHeartBeatReceived = now - lastTimeHeartBeatWasReceived
@@ -72,6 +120,11 @@ setInterval(function(){
   }
 },10000);
 
+/**
+ * Transform the byte array representation of the message
+ * to a string.
+ * @param {array} array 
+ */
 function bin2String(array) {
   var result = "";
   for (var i = 0; i < array.length; i++) {
@@ -80,55 +133,9 @@ function bin2String(array) {
   return result;
 }
 
-
+/**
+ * Listen for new client connections on port 3006.
+ */
 http.listen(3006, function(){
   console.log('listening on *:3006');
 });
-
-//An make it listen to port 9000
-//server.listen(Port,Address);
-
-//Binding the handleConnection function to the connection event. 
-//The server emits this event every time there is a new TCP connection made to the server, passing in the socket object.
-//server.on('connection', handleConnection);
-
-//Sockets objects can emit several events
-// data - every time data arrives from the connected peer
-// close - once the connection closes
-// error - if an error happens 
-/*function handleConnection(conn) {  
-
-  var remoteAddress = conn.remoteAddress + ':' + conn.remotePort;
-  console.log('new client connection from %s', remoteAddress);
-
-  conn.on('data', onConnData);
-  conn.on('close', onConnClose);
-  conn.on('error', onConnError);
-
-  function onConnData(d) {
-    var mensaje = bin2String(d);
-    sendMsg(mensaje, remoteAddress);
-    conn.write(d);
-    io.emit('mainServerOnline');
-  }
-
-  function onConnClose() {
-    //console.log('connection from %s closed', remoteAddress);
-    console.log('Main Server Offline', remoteAddress);
-    io.emit('disconnect');
-  }
-
-  function onConnError(err) {
-    console.log('Connection %s error: %s', remoteAddress, err.message);
-    io.emit('disconnect');
-  }
-}*/
-
-/*function sendMsg(mensaje, masterServerIp){
-  console.log(mensaje);
-    io.emit('updateTable', mensaje);
-    io.emit('updateFooterIp', masterServerIp);
-    console.log("io emit done successfully");
-};*/
-
-
