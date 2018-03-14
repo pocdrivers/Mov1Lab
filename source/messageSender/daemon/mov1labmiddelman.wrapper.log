@@ -1,0 +1,2 @@
+2018-03-14 08:59:19 - Starting C:\Program Files\nodejs\node.exe  --harmony "C:\Program Files (x86)\Mov1Lab\messageSender\node_modules\node-windows\lib\wrapper.js" --file D:\Aplicaciones\mov1lab\source\messageSender\app.js --log "mov1labMiddelMan wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2018-03-14 08:59:19 - Started 14500

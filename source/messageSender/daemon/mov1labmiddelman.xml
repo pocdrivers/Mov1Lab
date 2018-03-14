@@ -1,0 +1,25 @@
+<service>
+	<id>mov1labmiddelman.exe</id>
+	<name>mov1labMiddelMan</name>
+	<description>Monitor for the process that sends messages from cobas.</description>
+	<executable>C:\Program Files\nodejs\node.exe</executable>
+	<logmode>rotate</logmode>
+	<argument>--harmony</argument>
+	<argument>C:\Program Files (x86)\Mov1Lab\messageSender\node_modules\node-windows\lib\wrapper.js</argument>
+	<argument>--file</argument>
+	<argument>D:\Aplicaciones\mov1lab\source\messageSender\app.js</argument>
+	<argument>--log</argument>
+	<argument>mov1labMiddelMan wrapper</argument>
+	<argument>--grow</argument>
+	<argument>0.25</argument>
+	<argument>--wait</argument>
+	<argument>1</argument>
+	<argument>--maxrestarts</argument>
+	<argument>3</argument>
+	<argument>--abortonerror</argument>
+	<argument>n</argument>
+	<argument>--stopparentfirst</argument>
+	<argument>undefined</argument>
+	<stoptimeout>30sec</stoptimeout>
+	<workingdirectory>C:\Program Files (x86)\Mov1Lab\messageSender</workingdirectory>
+</service>

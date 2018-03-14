@@ -2,7 +2,7 @@ var Service = require('node-windows').Service;
  
 // Create a new service object
 var svc = new Service({
-  name:'mov1lab4MiddelMan',
+  name:'mov1labMiddelMan',
   description: 'Monitor for the process that sends messages from cobas.',
   script: 'D:\\Aplicaciones\\mov1lab\\source\\messageSender\\app.js'
 });
