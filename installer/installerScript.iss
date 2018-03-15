@@ -43,3 +43,6 @@ Filename: "{app}\messageSender\installService.bat"; Flags: runhidden
 [UninstallRun]
 Filename: "{app}\mov1lab\unistallService.bat"; Flags: runhidden
 Filename: "{app}\messageSender\unistallService.bat"; Flags: runhidden
+
+[UninstallDelete]             
+Type: filesandordirs; Name: "{app}"
