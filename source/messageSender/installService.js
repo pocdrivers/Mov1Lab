@@ -2,9 +2,9 @@ var Service = require('node-windows').Service;
  
 // Create a new service object
 var svc = new Service({
-  name:'mov1labMiddelMan',
+  name:'mov1labMiddelMan6',
   description: 'Monitor for the process that sends messages from cobas.',
-  script: 'D:\\Aplicaciones\\mov1lab\\source\\messageSender\\app.js'
+  script: 'C:\\Program Files (x86)\\Mov1Lab\\messageSender\\app.js'
 });
  
 // Listen for the 'install' event, which indicates the
