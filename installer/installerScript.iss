@@ -39,3 +39,7 @@ Source: "D:\Aplicaciones\mov1lab\source\messageSender\*"; DestDir: "{app}\messag
 [RUN]
 Filename: "{app}\mov1lab\installService.bat"; Flags: runhidden
 Filename: "{app}\messageSender\installService.bat"; Flags: runhidden
+
+[UninstallRun]
+Filename: "{app}\mov1lab\unistallService.bat"; Flags: runhidden
+Filename: "{app}\messageSender\unistallService.bat"; Flags: runhidden

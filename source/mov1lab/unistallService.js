@@ -2,9 +2,9 @@ var Service = require('node-windows').Service;
  
 // Create a new service object
 var svc = new Service({
-  name:'mov1lab4',
+  name:'mov1lab6',
   description: 'Monitor for the process that sends messages from cobas.',
-  script: 'D:\\Aplicaciones\\mov1lab\\source\\mov1lab\\app.js'
+  script: 'C:\\Program Files (x86)\\Mov1Lab\\mov1lab\\app.js'
 });
  
 // Listen for the 'uninstall' event so we know when it is done.
