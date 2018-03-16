@@ -45,11 +45,8 @@ var server = net.createServer(function(socket){
 
   var remoteAddress = socket.remoteAddress + ':' + socket.remotePort;
   
-  //if(!connectedClients.includes(socket.remoteAddress))
-  //{
-    connectedClients.push(socket.remoteAddress);
-    handleHandshake(remoteAddress);
-  //}
+  connectedClients.push(socket.remoteAddress);
+  handleHandshake(remoteAddress);
 
   /**
    * Event that gets executed everytime a message is received.
@@ -76,8 +73,8 @@ var server = net.createServer(function(socket){
   });
 
   socket.on('close',function(){
-    console.log('cerrando');
-    //io.emit('disconnect');
+    console.log('close');
+    io.emit('disconnect');
   });
 
   /**
