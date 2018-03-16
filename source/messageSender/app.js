@@ -23,7 +23,7 @@ var http = require('http').Server(app);
 */
 var io = require('socket.io')(http,{pingInterval: 1000, pingTimeout:5000});
 /**
- * Default port to listen for messages comming from cobas
+ * Default port to listen for messages coming from cobas
  */
 const Port = 9000;
 /** 
@@ -66,7 +66,7 @@ var server = net.createServer(function(socket){
     {
       lastTimeHeartBeatWasReceived = new Date();
       console.log(lastTimeHeartBeatWasReceived);
-      console.log('Client is alive');
+      console.log('Hl7Converter is alive');
     }
     else
     {
@@ -107,13 +107,13 @@ function handleHandshake(remoteAddress){
 /**
  * This method gets executed every 10 seconds to check when was
  * the last time that a heartbeat was received. If the interval
- * of time is bigger than 10 seconds, we asume the server is 
+ * of time is bigger than 20 seconds, we asume the server is 
  * down.
  */
 setInterval(function(){
   var now = new Date();
   var timeSinceLastHeartBeatReceived = now - lastTimeHeartBeatWasReceived
-  if(timeSinceLastHeartBeatReceived > 10000)
+  if(timeSinceLastHeartBeatReceived > 20000)
   {
     console.log('Server down!');
     io.emit('disconnect');
