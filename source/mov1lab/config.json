@@ -1,6 +1,6 @@
 {
-  "user": "a",
-  "password": "1",
+  "user": "user",
+  "password": "abc",
   "serverIp": "localhost",
   "serverPort": "3006"
 }

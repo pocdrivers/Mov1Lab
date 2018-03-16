@@ -71,9 +71,12 @@ socket.on('pong',function(){
   lastTimeHeartBeatWasReceived = new Date();
 });
 
-
 socket.on('disconnect',function(){
   setOfflineIcon();
+});
+
+socket.on('hl7ConverterAlive',function(){
+  setOnlineIcon();
 });
 
 
@@ -112,10 +115,10 @@ setInterval(function(){
 
 function setOfflineIcon(){
   var status = document.getElementById("status");
-  status.src = "../images/offline.png";
+  status.className ="reddot";
 };
 
 function setOnlineIcon(){
   var status = document.getElementById("status");
-  status.src = "../images/online.png";
+  status.className ="greendot";
 };

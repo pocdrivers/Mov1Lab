@@ -62,6 +62,7 @@ var server = net.createServer(function(socket){
     if(mensaje == 'Ping')
     {
       lastTimeHeartBeatWasReceived = new Date();
+      io.emit('hl7ConverterAlive');
       console.log(lastTimeHeartBeatWasReceived);
       console.log('Hl7Converter is alive');
     }
@@ -72,10 +73,11 @@ var server = net.createServer(function(socket){
     }
   });
 
-  socket.on('close',function(){
+  /**socket.on('close',function(){
     console.log('close');
     io.emit('disconnect');
-  });
+  });**/ 
+  
 
   /**
    * Event that gets executed everytime the application that
@@ -110,12 +112,12 @@ function handleHandshake(remoteAddress){
 setInterval(function(){
   var now = new Date();
   var timeSinceLastHeartBeatReceived = now - lastTimeHeartBeatWasReceived
-  if(timeSinceLastHeartBeatReceived > 20000)
+  if(timeSinceLastHeartBeatReceived > 10000)
   {
     console.log('Server down!');
     io.emit('disconnect');
   }
-},10000);
+},5000);
 
 /**
  * Transform the byte array representation of the message
