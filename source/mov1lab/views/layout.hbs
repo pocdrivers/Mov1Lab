@@ -14,8 +14,12 @@
     <nav class="navbar navbar-light">
       <a class="navbar-brand">
         {{#if user}}
-        <img src="/images/rochesmall.png" class="d-inline-block align-top" alt=""> {{/if}}
+        <img src="/images/rochesmall.png" class="d-inline-block align-top" alt="" />
+        {{/if}}
       </a>
+      {{#if user}}
+      <p class="lead">Mov1Lab</p>
+      {{/if}}
       <ul class="navbar-nav">
         {{#if user}}
         <li class="nav-item">
@@ -44,7 +48,7 @@
           <p>Mov1Lab</p>
         </div>
         <div class="col">
-          <span id="status"/>
+          <span id="status" />
         </div>
         <div class="col" id='masterServerIp'></div>
         <div class="col" id='date'></div>
