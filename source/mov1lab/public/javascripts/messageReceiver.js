@@ -31,27 +31,27 @@ function startMessageReceive(socket){
       var tdDatetime = document.createElement("td");
       tr.appendChild(tdDatetime);
       tdDatetime.innerText = data.Datetime;
-      tdDatetime.className ="col-md-3";
+      tdDatetime.className ="col-md-3 lead";
 
       var tdPatien = document.createElement("td");
       tr.appendChild(tdPatien);
       tdPatien.innerText = data.Patient;
-      tdPatien.className ="col-md-2";
+      tdPatien.className ="col-md-2 lead";
 
       var tdTest = document.createElement("td");
       tr.appendChild(tdTest);
       tdTest.innerText = data.Test;
-      tdTest.className ="col-md-2";
+      tdTest.className ="col-md-2 lead";
 
       var tdInstrument = document.createElement("td");
       tr.appendChild(tdInstrument);
       tdInstrument.innerText = data.Instrument;
-      tdInstrument.className ="col-md-2";
+      tdInstrument.className ="col-md-2 lead";
 
       var tdSerial = document.createElement("td");
       tr.appendChild(tdSerial);
       tdSerial.innerText = data.Serial;
-      tdSerial.className ="col-md-3";
+      tdSerial.className ="col-md-3 lead";
 
       dataTable.insertBefore(tr,dataTable.firstElementChild);  
   });
