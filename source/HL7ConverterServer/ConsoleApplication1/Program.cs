@@ -22,8 +22,6 @@ namespace HL7ToXMLServer
 
     class Program
     {
-
-        private static string folderToStoreMessages = "C:\\Temp\\HL7XMLMessages\\";
         private static int defaultPortNumber = 19000;
         private static bool openInBrowser = false;
 
@@ -86,7 +84,7 @@ namespace HL7ToXMLServer
             }
             else
             {
-                Console.WriteLine("[LOG] Client disconnected.");
+                Console.WriteLine("[LOG] Client disconnected.\n");
                 context.Client.Close();
                 context.Stream.Dispose();
                 context.Message.Dispose();
@@ -97,53 +95,9 @@ namespace HL7ToXMLServer
         // conversion to xml and html
         static void ConvertMessage(MemoryStream message)
         {
-            Console.WriteLine("Antes de enviar el mensaje: " + Encoding.ASCII.GetString(message.ToArray()));
-            string xmlContent = HL7Converter.ConvertToXml(Encoding.ASCII.GetString(message.ToArray()));
-            Console.WriteLine("XML Message: ");
-            Console.WriteLine(xmlContent);
+            string xmlContent = HL7Converter.ConvertToTemplate(Encoding.ASCII.GetString(message.ToArray()));
             SendMessage(xmlContent);
-            /*string xmlContent = HL7Converter.ConvertToXml(Encoding.ASCII.GetString(message.ToArray()));
-            string dateTimeFile = DateTime.Now.ToString("yyyyMMddhhmmss");
-            if (!Directory.Exists(folderToStoreMessages))
-            {
-                Directory.CreateDirectory(folderToStoreMessages);
-            }
-
-            String xmlFile = folderToStoreMessages + "IncomingMessage" + dateTimeFile + ".xml";
-            // This text is added only once to the file.
-
-
-            if (File.Exists(xmlFile))
-            {
-                Console.WriteLine("[LOG] File already exists. Overwritting previous file");
-            }
-
-            // Create a file to write to.
-            File.WriteAllText(xmlFile, xmlContent);
-
-
-            string htmlContent = HL7Converter.ConvertToHtml(xmlContent);
-
-            String htmlFile = folderToStoreMessages + "IncomingMessage" + dateTimeFile + ".html";
-            // This text is added only once to the file.
-
-            if (File.Exists(htmlFile))
-            {
-                Console.WriteLine("[LOG] File already exists. Overwritting previous file");
-            }
-
-            // Create a file to write to.
-            File.WriteAllText(htmlFile, htmlContent);
-
-            Console.WriteLine("[LOG] Message stored under: " + xmlFile);
-            Console.WriteLine("[LOG] Message stored under: " + htmlFile);
-
-            if (openInBrowser)
-            {
-                // open created html in the default browser
-                Console.WriteLine("[LOG] Automatically open html file in browser");
-                System.Diagnostics.Process.Start(htmlFile);
-            }*/
+           
         }
 
         // client connection accepted callback
@@ -155,7 +109,7 @@ namespace HL7ToXMLServer
 
             try
             {
-                Console.WriteLine("[LOG] Client connected");
+                Console.WriteLine("[LOG] Client connected\n");
                 ClientContext context = new ClientContext();
                 context.Client = listener.EndAcceptTcpClient(ar);
                 context.Stream = context.Client.GetStream();
@@ -173,7 +127,7 @@ namespace HL7ToXMLServer
 
         static void SendMessage(string msg)
         {
-            Console.WriteLine("Sending message: ");
+            Console.WriteLine("Sending message: \n");
             Console.WriteLine(msg);
             // Data buffer for incoming data.  
             byte[] bytes = new byte[1024];
@@ -198,7 +152,7 @@ namespace HL7ToXMLServer
                 {
                     sender.Connect(remoteEp);
 
-                    Console.WriteLine("Socket connected to {0}",
+                    Console.WriteLine("Socket connected to {0}\n",
                         sender.RemoteEndPoint.ToString());
 
                     // Encode the data string into a byte array.  
@@ -213,10 +167,10 @@ namespace HL7ToXMLServer
                         Encoding.ASCII.GetString(bytes, 0, bytesRec));*/
 
                     // Release the socket.  
-                    Console.WriteLine("Releasing socket");
+                    Console.WriteLine("Releasing socket\n");
                     sender.Shutdown(SocketShutdown.Both);
                     sender.Close();
-                    Console.WriteLine("END OF TRANSMISION");
+                    Console.WriteLine("END OF TRANSMISION\n");
 
                 }
                 catch (ArgumentNullException ane)
@@ -239,86 +193,48 @@ namespace HL7ToXMLServer
             }
         }
 
-        //private static void SendHeartBeat(object state)
-        //{
-        //    Console.WriteLine("Sending HeartBeat");
-        //    SendMessage("Ping");
-        //}
+        private static void StartHeartBeatMonitor()
+        {
+            Timer timerMonitor = new Timer(new TimerCallback(SendHeartBeat), null, 0, 10000);
+        }
 
-
-        //private static void StartHeartBeatMonitor()
-        //{
-        //    Timer timerMonitor = new Timer(new TimerCallback(SendHeartBeat),null,0,10000);
-        //}
+        private static void SendHeartBeat(object state)
+        {
+            Console.WriteLine("Sending HeartBeat\n");
+            SendMessage("Ping");
+        }
 
         // main funcion
         static void Main(string[] args)
         {
+            Console.ForegroundColor = ConsoleColor.Green;
+            string title = @"
+ |  | |  __  /__|                     |           
+ __ | |     /(     _ \   \\ \ / -_)  _|_|  -_)  _|
+_| _|____|_/\___|\___/_| _|\_/\___|_|\__|\___|_|  ";
+
+            Console.Title = "HL7Converter";
+            Console.WriteLine(title+"\n");
+
             int portNumber = defaultPortNumber;
             try
             {
-                Console.Write("Please Specify the port on which the server should start up: ");
-                string portToStartup = Console.ReadLine();
-                portNumber = Convert.ToInt32(portToStartup);
+                Console.Write("Port on which the server should start up: 19000\n");
+
             }
             catch (System.Exception)
             {
-                Console.WriteLine("[LOG] Portnumber entered not a valid number, using default port 19000 now...");
+                Console.WriteLine("[LOG] Portnumber entered not a valid number, using default port 19000 now...\n");
             }
-
-            Console.Write("Please specify the directory to store the converted (XML-)Messages (or hit enter for the default): ");
-            string folderEntered = Console.ReadLine();
-            if (!String.IsNullOrEmpty(folderEntered))
-            {
-                folderToStoreMessages = folderEntered;
-            }
-            else
-            {
-                Console.WriteLine("[LOG] Using default folder: " + folderToStoreMessages);
-            }
-
-            Console.Write("Include all values of HL7 messages in HTML display(Y/N): ");
-            string displayAllInHTML = Console.ReadLine();
-
-            if (displayAllInHTML.ToLower().Equals("y") || displayAllInHTML.ToLower().Equals("yes"))
-            {
-                HL7Converter.showAllInHtml = true;
-            }
-            else if (displayAllInHTML.ToLower().Equals("n") || displayAllInHTML.ToLower().Equals("no"))
-            {
-                HL7Converter.showAllInHtml = false;
-            }
-            else
-            {
-                HL7Converter.showAllInHtml = false;
-            }
-
-            Console.Write("Open retrieved result directly in browser (Y/N): ");
-            string displayDirectly = Console.ReadLine();
-
-            if (displayDirectly.ToLower().Equals("y") || displayDirectly.ToLower().Equals("yes"))
-            {
-                openInBrowser = true;
-            }
-            else if (displayDirectly.ToLower().Equals("n") || displayDirectly.ToLower().Equals("no"))
-            {
-                openInBrowser = false;
-            }
-            else
-            {
-                openInBrowser = false;
-            }
-
-            Console.WriteLine("[LOG] Open directly in browser on retrieval: " + openInBrowser);
 
             TcpListener listener = new TcpListener(new IPEndPoint(IPAddress.Any, portNumber));
             listener.Start();
 
             listener.BeginAcceptTcpClient(OnClientAccepted, listener);
-            //StartHeartBeatMonitor();
-            Console.WriteLine("[LOG] Press enter to exit...");
+            StartHeartBeatMonitor();
+            //Console.WriteLine("[LOG] Press enter to exit...");
             Console.ReadLine();
-            Console.WriteLine("[LOG] Shutting down.....");
+            //Console.WriteLine("[LOG] Shutting down.....");
             listener.Stop();
         }
     }
