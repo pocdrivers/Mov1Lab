@@ -1,9 +1,10 @@
 const MaxRows = 20;
-const DatetimePosition = 1;
-const PatientPosition = 2;
-const TestPosition = 3;
-const InstrumentPosition = 4;
-const SerialPosition = 5;
+const TimePosition = 1;
+const DatePosition = 2;
+const PatientPosition = 3;
+const TestPosition = 4;
+const InstrumentPosition = 5;
+const SerialPosition = 6;
 var httpRequest = new XMLHttpRequest();
 var lastTimeHeartBeatWasReceived;
 
@@ -18,7 +19,7 @@ httpRequest.send();
 
 function startMessageReceive(socket){
   socket.on('updateTable', function (msg) {
-    setOnlineIcon();
+    updateLastConnection();
     var data = parseHl7message(msg);
     var dataTable = document.getElementById("update-table");
   
@@ -28,10 +29,15 @@ function startMessageReceive(socket){
       
       var tr = document.createElement("tr");
 
-      var tdDatetime = document.createElement("td");
-      tr.appendChild(tdDatetime);
-      tdDatetime.innerText = data.Datetime;
-      tdDatetime.className ="col-md-3 lead";
+      var tdTime = document.createElement("td");
+      tr.appendChild(tdTime);
+      tdTime.innerText = data.Time;
+      tdTime.className ="lead";
+
+      var tdDate = document.createElement("td");
+      tr.appendChild(tdDate);
+      tdDate.innerText = data.Date;
+      tdDate.className ="col-md-2 lead";
 
       var tdPatien = document.createElement("td");
       tr.appendChild(tdPatien);
@@ -53,32 +59,20 @@ function startMessageReceive(socket){
       tdSerial.innerText = data.Serial;
       tdSerial.className ="col-md-3 lead";
 
-      dataTable.insertBefore(tr,dataTable.firstElementChild);  
+      dataTable.insertBefore(tr,dataTable.firstElementChild);
   });
 
 function parseHl7message(msg) {
   var splitMsg = msg.split("|");
   return { 
-    Datetime: splitMsg[DatetimePosition] == '' ? "-" : splitMsg[DatetimePosition], 
+    Time: splitMsg[TimePosition] == '' ? "-" : splitMsg[TimePosition], 
+    Date: splitMsg[DatePosition] == '' ? "-" : splitMsg[DatePosition], 
     Patient: hidePatientId(splitMsg[PatientPosition] == '' ? "-" : splitMsg[PatientPosition]), 
     Test: splitMsg[TestPosition] == '' ? "-" : splitMsg[TestPosition], 
     Instrument: splitMsg[InstrumentPosition] == '' ? "-" : splitMsg[InstrumentPosition],
     Serial: splitMsg[SerialPosition] == '' ? "-" : splitMsg[SerialPosition]
   };
 };
-
-socket.on('pong',function(){
-  lastTimeHeartBeatWasReceived = new Date();
-});
-
-socket.on('disconnect',function(){
-  setOfflineIcon();
-});
-
-socket.on('hl7ConverterAlive',function(){
-  setOnlineIcon();
-});
-
 
 socket.on('updateFooterIp',function(masterServerIp){
   document.getElementById("masterServerIp").innerText = "IP: " + masterServerIp.replace("::ffff:",'');
@@ -104,21 +98,6 @@ function updateDate(){
 setInterval(updateDate,1000);
 };
 
-setInterval(function(){
-  var now = new Date();
-  var timeSinceLastHeartBeatReceived = now - lastTimeHeartBeatWasReceived
-  if(timeSinceLastHeartBeatReceived > 10000)
-  {
-    console.log('Middleman down!');
-  }
-},10000);
-
-function setOfflineIcon(){
-  var status = document.getElementById("status");
-  status.className ="reddot";
-};
-
-function setOnlineIcon(){
-  var status = document.getElementById("status");
-  status.className ="greendot";
+function updateLastConnection(){
+  document.getElementById("status").innerText = "Última conexión: " + new Date().toLocaleDateString() + " " + new Date().toLocaleTimeString();
 };

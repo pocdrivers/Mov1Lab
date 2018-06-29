@@ -1,8 +1,8 @@
 var fs = require('fs');
 
 exports.showMessages = function(req, res) {
-  req.checkBody('username', 'Username is required').notEmpty();
-  req.checkBody('password', 'Password is required').notEmpty();
+  req.checkBody('username', 'Usuario es requerido').notEmpty();
+  req.checkBody('password', 'Contraseña es requerida').notEmpty();
 
   var errors = req.validationErrors();
 
@@ -20,7 +20,7 @@ exports.showMessages = function(req, res) {
       }
       else 
       {
-        var errorMessages = [{msg: "Invalid username or password."}];
+        var errorMessages = [{msg: "Usuario o contraseña invalida."}];
         res.render('login',{errors:errorMessages});
       }
     } catch (e) {
