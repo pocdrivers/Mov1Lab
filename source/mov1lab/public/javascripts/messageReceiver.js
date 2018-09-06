@@ -92,14 +92,19 @@ function hidePatientId(patientId){
 };
 
 function updateDate(){
-  var day = new Date().getDay();
-  var month = new Date().getMonth();
-  var year = new Date().getFullYear();
-  var hour = new Date().getHours();
-  var minute = new Date().getMinutes();
-  var second = new Date().getSeconds();
+  var day = "0" + new Date().getDay().toString();
+  var month = "0" + new Date().getMonth().toString();
+  var year = new Date().getFullYear().toString();
+  var hour = "0" + new Date().getHours().toString();
+  var minute = "0" + new Date().getMinutes().toString();
+  var second = "0" + new Date().getSeconds().toString();
 
-  document.getElementById("date").innerText = day.toString() + "/" + month.toString() + "/" + year.toString() + " " + hour.toString() + ":" + minute.toString() + ":" + second.toString();
+  document.getElementById("date").innerText = day.substring(day.length -2, day.length) + "/" + 
+                                              month.substring(month.length -2, month.length) + "/" + 
+                                              year.toString() + " " +
+                                              hour.substring(hour.length -2, hour.length) + ":" +
+                                              minute.substring(minute.length -2, minute.length) + ":" +
+                                              second.substring(second.length -2, second.length);
 };
 
 setInterval(updateDate,1000);
