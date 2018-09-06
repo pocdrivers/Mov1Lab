@@ -92,7 +92,14 @@ function hidePatientId(patientId){
 };
 
 function updateDate(){
-  document.getElementById("date").innerText = new Date().toLocaleDateString() + " " + new Date().toLocaleTimeString();
+  var day = new Date().getDay();
+  var month = new Date().getMonth();
+  var year = new Date().getFullYear();
+  var hour = new Date().getHours();
+  var minute = new Date().getMinutes();
+  var second = new Date().getSeconds();
+
+  document.getElementById("date").innerText = day.toString() + "/" + month.toString() + "/" + year.toString() + " " + hour.toString() + ":" + minute.toString() + ":" + second.toString();
 };
 
 setInterval(updateDate,1000);
