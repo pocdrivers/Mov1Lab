@@ -32,13 +32,13 @@ function startMessageReceive(socket){
       var tdDate = document.createElement("td");
       tr.appendChild(tdDate);
       tdDate.innerText = data.Date;
-      tdDate.className ="col-md-2 lead";
+      tdDate.className ="lead";
+      tdDate.style ="padding-right: 22px;";
 
       var tdTime = document.createElement("td");
       tr.appendChild(tdTime);
       tdTime.innerText = data.Time;
-      tdTime.className ="lead";      
-      tdTime.style = "padding-right: 43px;";
+      tdTime.className ="col-md-2 lead";
 
       var tdPatien = document.createElement("td");
       tr.appendChild(tdPatien);
