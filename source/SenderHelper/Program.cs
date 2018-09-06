@@ -10,8 +10,11 @@ namespace SenderHelper
     class Program
     {
         private static Socket socketSender;
-        private const string middleManIp = "192.168.126.1";
-        private static string msg = "MSH|2018-02-28|PAT020|CRP-AF|AF100 50596|50596||||1802282CF9E1B1855|P|2.3|||NE|SUPID|1||PAT020||lastname20^patient20^||19900706|F||||||||||PV1|1||SOFIAHIS||||||||||||||||ORC|NW|^HIS|||CM||||20180228140600OBR||^HIS||||||||||||||||||||20180228010101|||FOBX|1|ST|PATID|1|PAT020||||||FOBX|2|ST|VISIT|1|||||||FOBX|3|ST|LASTNAME|1|lastname20||||||FOBX|4|ST|FIRSTNAME|1|patient20||||||FOBX|5|ST|SEX|1|F||||||FOBX|6|ST|DATEOFBIRTH|1|19900706||||||FOBX|7|ST|ANALYZERNAME|1|AF100 50596||||||FOBX|8|ST|ANALYZEDATETIME|1|20180228010101||||||FOBX|9|ST|OPID|1|HUGO||||||FOBX|10|ST|CRP-AF|50596|59.0|mg/L|-||||F|||20180228010101OBX|11|01:01:01|NEWTEST|CRP-AF|AF100 50596||||||50596OBX|12|ST|HbA1cAF|50596|6.6|%|-||||F|||20180228010101OBX|13|01:01:01|NEWTEST|HbA1cAF|AF100 50596||||||50596";
+        //private const string middleManIp = "192.168.126.1";
+        //private static string msg = "MSH|2018-02-28|PAT020|CRP-AF|AF100 50596|50596||||1802282CF9E1B1855|P|2.3|||NE|SUPID|1||PAT020||lastname20^patient20^||19900706|F||||||||||PV1|1||SOFIAHIS||||||||||||||||ORC|NW|^HIS|||CM||||20180228140600OBR||^HIS||||||||||||||||||||20180228010101|||FOBX|1|ST|PATID|1|PAT020||||||FOBX|2|ST|VISIT|1|||||||FOBX|3|ST|LASTNAME|1|lastname20||||||FOBX|4|ST|FIRSTNAME|1|patient20||||||FOBX|5|ST|SEX|1|F||||||FOBX|6|ST|DATEOFBIRTH|1|19900706||||||FOBX|7|ST|ANALYZERNAME|1|AF100 50596||||||FOBX|8|ST|ANALYZEDATETIME|1|20180228010101||||||FOBX|9|ST|OPID|1|HUGO||||||FOBX|10|ST|CRP-AF|50596|59.0|mg/L|-||||F|||20180228010101OBX|11|01:01:01|NEWTEST|CRP-AF|AF100 50596||||||50596OBX|12|ST|HbA1cAF|50596|6.6|%|-||||F|||20180228010101OBX|13|01:01:01|NEWTEST|HbA1cAF|AF100 50596||||||50596";
+        private const string middleManIp = "127.0.0.1";
+        //private static string[] msg = { "MSH|14:55|28-02-2018|PAT020|CRP-AF|AF100 50596|50596|||", "MSH|12:24|08-08-2018|PAT008|CRP-AF|AF100 50596|50596|||", "MSH|17:13|19-09-2016|PAT020|GAS|B101|12345|||" };
+        private static string[] msg = { "MSH|28-02-2018|14:55|PAT020|CRP-AF|AF100 50596|50596|||", "MSH|01-01-1991|12:24|PAT008|RAD-ABL90|AF100 50596|50596|||", "MSH|19-09-2016|17:13|PAT020|GAS|B101|12345|||" };
         private static Timer timer1;
 
         static void Main(string[] args)
@@ -23,8 +26,13 @@ namespace SenderHelper
                 try
                 {
                     Console.WriteLine("Enviando mensaje");
-                    SendMessage(msg);
-                    Thread.Sleep(3000);
+                    //SendMessage(msg);
+                    //Thread.Sleep(3000);
+                    foreach (string sms in msg)
+                    {
+                        SendMessage(sms);
+                        Thread.Sleep(3000);
+                    }
                 }
                 catch (Exception e)
                 {

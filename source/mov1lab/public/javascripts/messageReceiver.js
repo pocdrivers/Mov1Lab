@@ -1,6 +1,6 @@
 const MaxRows = 20;
-const TimePosition = 1;
-const DatePosition = 2;
+const DatePosition = 1;
+const TimePosition = 2;
 const PatientPosition = 3;
 const TestPosition = 4;
 const InstrumentPosition = 5;
@@ -29,15 +29,16 @@ function startMessageReceive(socket){
       
       var tr = document.createElement("tr");
 
-      var tdTime = document.createElement("td");
-      tr.appendChild(tdTime);
-      tdTime.innerText = data.Time;
-      tdTime.className ="lead";
-
       var tdDate = document.createElement("td");
       tr.appendChild(tdDate);
       tdDate.innerText = data.Date;
       tdDate.className ="col-md-2 lead";
+
+      var tdTime = document.createElement("td");
+      tr.appendChild(tdTime);
+      tdTime.innerText = data.Time;
+      tdTime.className ="lead";      
+      tdTime.style = "padding-right: 43px;";
 
       var tdPatien = document.createElement("td");
       tr.appendChild(tdPatien);
@@ -65,8 +66,8 @@ function startMessageReceive(socket){
 function parseHl7message(msg) {
   var splitMsg = msg.split("|");
   return { 
-    Time: splitMsg[TimePosition] == '' ? "-" : splitMsg[TimePosition], 
     Date: splitMsg[DatePosition] == '' ? "-" : splitMsg[DatePosition], 
+    Time: splitMsg[TimePosition] == '' ? "-" : splitMsg[TimePosition], 
     Patient: hidePatientId(splitMsg[PatientPosition] == '' ? "-" : splitMsg[PatientPosition]), 
     Test: splitMsg[TestPosition] == '' ? "-" : splitMsg[TestPosition], 
     Instrument: splitMsg[InstrumentPosition] == '' ? "-" : splitMsg[InstrumentPosition],
