@@ -18,6 +18,12 @@ httpRequest.open("GET", "/messages/getServerIpAndPort");
 httpRequest.send();
 
 function startMessageReceive(socket){
+  socket.on('close', function(){
+    console.log('Close received!');
+    document.getElementById("status").src = "/images/offline.png";
+    console.log('Offline icon set!');
+  })
+
   socket.on('updateTable', function (msg) {
     updateLastConnection();
     var data = parseHl7message(msg);
@@ -77,7 +83,6 @@ function parseHl7message(msg) {
 
 socket.on('updateFooterIp',function(masterServerIp){
   document.getElementById("masterServerIp").innerText = "IP: " + masterServerIp.replace("::ffff:",'');
-  masterServerConnected = true;
 });
 
 function hidePatientId(patientId){
@@ -112,5 +117,11 @@ setInterval(updateDate,1000);
 };
 
 function updateLastConnection(){
-  document.getElementById("status").innerText = "Última conexión: " + new Date().toLocaleDateString() + " " + new Date().toLocaleTimeString();
+  document.getElementById("status").src = "/images/online.png"
 };
+
+// socket.on('disconnect',function(time){
+//   console.log('Disconnect received!' + time);
+//   document.getElementById("status").src = "/images/offline.png"
+//   console.log('Offline icon set!' + time);
+// });

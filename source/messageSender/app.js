@@ -73,12 +73,11 @@ var server = net.createServer(function(socket){
     }
   });
 
-  /**socket.on('close',function(){
-    console.log('close');
-    io.emit('disconnect');
-  });**/ 
+  socket.on('disconnect',function(){
+    console.log('Messages sending is closed by disconnect received');
+    io.emit('close');
+  });
   
-
   /**
    * Event that gets executed everytime the application that
    * sends messages fails. When this happen the client gets
@@ -89,7 +88,7 @@ var server = net.createServer(function(socket){
       console.log('An unexpected error occured: ', e);
     }
     console.log('error');
-    io.emit('disconnect');
+    io.emit('close');
   });
 
 }).listen(Port);
@@ -109,15 +108,16 @@ function handleHandshake(remoteAddress){
  * of time is bigger than 20 seconds, we asume the server is 
  * down.
  */
-setInterval(function(){
-  var now = new Date();
-  var timeSinceLastHeartBeatReceived = now - lastTimeHeartBeatWasReceived
-  if(timeSinceLastHeartBeatReceived > 10000)
-  {
-    console.log('Server down!');
-    io.emit('disconnect');
-  }
-},5000);
+// setInterval(function(){
+//   var now = new Date();
+//   var timeSinceLastHeartBeatReceived = now - lastTimeHeartBeatWasReceived
+//   if(timeSinceLastHeartBeatReceived > 10000)
+//   {
+//     console.log('Server down!');
+//     io.emit('close');
+//     console.log('Server down sent!');
+//   }
+// },5000);
 
 /**
  * Transform the byte array representation of the message
