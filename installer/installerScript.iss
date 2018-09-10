@@ -22,7 +22,7 @@ DefaultDirName={pf}\{#MyAppName}
 DisableDirPage=yes
 DefaultGroupName={#MyAppName}
 DisableProgramGroupPage=yes
-OutputDir=D:\DriversPOC\mov1labRepo\Mov1Lab\installer
+OutputDir=C:\GitHub Repository\Mov1Lab\installer
 OutputBaseFilename=mov1lab
 Compression=lzma
 SolidCompression=yes
@@ -32,8 +32,8 @@ UninstallDisplayName=UninstallMov1Lab
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Files]
-Source: "D:\DriversPOC\mov1labRepo\Mov1Lab\source\mov1lab\*"; DestDir: "{app}\mov1lab"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "D:\DriversPOC\mov1labRepo\Mov1Lab\source\messageSender\*"; DestDir: "{app}\messageSender"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "C:\GitHub Repository\Mov1Lab\source\mov1lab\*"; DestDir: "{app}\mov1lab"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "C:\GitHub Repository\Mov1Lab\source\messageSender\*"; DestDir: "{app}\messageSender"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [RUN]
