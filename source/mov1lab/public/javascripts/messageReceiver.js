@@ -98,8 +98,8 @@ function hidePatientId(patientId){
 };
 
 function updateDate(){
-  var day = "0" + new Date().getDay().toString();
-  var month = "0" + new Date().getMonth().toString();
+  var day = "0" + new Date().getUTCDate().toString();
+  var month = "0" + (parseInt(new Date().getUTCMonth().toString())+1);
   var year = new Date().getFullYear().toString();
   var hour = "0" + new Date().getHours().toString();
   var minute = "0" + new Date().getMinutes().toString();
