@@ -39,7 +39,7 @@ function startMessageReceive(socket){
       tr.appendChild(tdDate);
       tdDate.innerText = data.Date;
       tdDate.className ="lead";
-      tdDate.style ="padding-right: 22px;";
+      tdDate.style ="padding-right: 22px; width: 130px;";
 
       var tdTime = document.createElement("td");
       tr.appendChild(tdTime);
